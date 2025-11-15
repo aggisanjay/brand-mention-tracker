@@ -1,0 +1,40 @@
+version: '3.8'
+services:
+  mongo:
+    image: mongo:6.0
+    restart: unless-stopped
+    volumes:
+      - mongodata:/data/db
+    ports:
+      - "27017:27017"
+
+  nlp-service:
+    build: ./nlp-service
+    env_file:
+      - ./nlp-service/.env
+    ports:
+      - "8500:8500"
+    depends_on:
+      - mongo
+
+  backend:
+    build: ./backend
+    env_file:
+      - ./backend/.env
+    ports:
+      - "4000:4000"
+    depends_on:
+      - mongo
+      - nlp-service
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "5173:5173"
+    environment:
+      - VITE_API=http://localhost:4000
+    depends_on:
+      - backend
+
+volumes:
+  mongodata:
