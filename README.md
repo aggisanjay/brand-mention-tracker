@@ -1,4 +1,4 @@
-🚀 Brand Mention & Reputation Tracker
+## 🚀 Brand Mention & Reputation Tracker
 
 Real-Time Brand Monitoring Across Reddit, HackerNews, RSS, and Custom Streams — powered by NLP + Socket.io + Spike Detection.
 
@@ -7,9 +7,13 @@ Real-Time Brand Monitoring Across Reddit, HackerNews, RSS, and Custom Streams �
 This system continuously tracks mentions of your brand from real public sources:
 
 ✔ Reddit
+
 ✔ HackerNews
+
 ✔ TechCrunch RSS
+
 ✔ Custom simulators
+
 ✔ Any additional sources you add
 
 Every mention flows into your backend, gets analyzed by a Python NLP service, and updates the UI in real-time via Socket.io.
@@ -26,30 +30,6 @@ Topic clustering
 Spike detection alerts
 
 Beautiful dashboard UI
-
-
-┌───────────────────────────┐       ┌──────────────────────────┐
-│  Frontend (React + Vite)  │◀────▶│  Backend API (Node.js)   │
-│  - Live Dashboard          │ Web  │  - Socket.io (real-time) │
-│  - Pie Charts, Alerts      │ Sock │  - Saves to MongoDB      │
-└───────────────────────────┘       │  - Spike Detector Cron   │
-                                    └───────────▲──────────────┘
-                                                │
-                                         HTTP POST Mentions
-                                                │
-                             ┌──────────────────┴──────────────────┐
-                             │     NLP Service (Python Flask)      │
-                             │ Sentiment + Topics + Embeddings     │
-                             └──────────────────▲──────────────────┘
-                                                │
-                                       HTTP POST FEEDS
-                                                │
-                                ┌───────────────┴────────────────┐
-                                │     Fetcher (Reddit / HN / RSS) │
-                                │     + Simulator messages         │
-                                └──────────────────────────────────┘
-
-
 
 
 ⚙️ Setup Instructions
